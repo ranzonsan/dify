@@ -22,13 +22,25 @@ export default function SignInLayout({ children }: PropsWithChildren) {
             </div>
           </div>
           {systemFeatures.branding.enabled === false && (
-            <div className="px-8 py-6 system-xs-regular text-text-tertiary">
-              ©
-              {' '}
-              {new Date().getFullYear()}
-              {' '}
-              LangGenius, Inc. All rights reserved.
-            </div>
+            <>
+              <div className="px-8 py-6 system-xs-regular text-text-tertiary">
+                ©
+                {' '}
+                {new Date().getFullYear()}
+                {' '}
+                LangGenius, Inc. All rights reserved.
+              </div>
+              <div className="px-8 py-6 system-xs-regular text-text-tertiary">
+                <a
+                  href="https://beian.miit.gov.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  陕ICP备2026012460号-1
+                </a>
+              </div>
+            </>
           )}
         </div>
       </div>
