@@ -4,6 +4,7 @@ import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import Loading from '@/app/components/base/loading'
 import Header from '@/app/signin/_header'
+import { ICP_LINK, ICP_NUMBER } from '@/config'
 import { AppContextProvider } from '@/context/app-context-provider'
 import { isLegacyBase401, userProfileQueryOptions } from '@/features/account-profile/client'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
@@ -46,11 +47,25 @@ export default function SignInLayout({ children }: any) {
           </div>
           {systemFeatures.branding.enabled === false && (
             <div className="px-8 py-6 system-xs-regular text-text-tertiary">
-              ©
-              {' '}
-              {new Date().getFullYear()}
-              {' '}
-              LangGenius, Inc. All rights reserved.
+              <div>
+                ©
+                {' '}
+                {new Date().getFullYear()}
+                {' '}
+                LangGenius, Inc. All rights reserved.
+              </div>
+              {ICP_NUMBER && (
+                <div className="mt-1">
+                  <a
+                    href={ICP_LINK || 'https://beian.miit.gov.cn/'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {ICP_NUMBER}
+                  </a>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -99,6 +99,16 @@ const clientSchema = {
    * The maximum number of tokens for segmentation
    */
   NEXT_PUBLIC_INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: coercedNumber.default(4000),
+  /**
+   * ICP (Internet Content Provider) record number displayed in the login footer.
+   * Example: "陕ICP备2026012460号-1"
+   */
+  NEXT_PUBLIC_ICP_NUMBER: z.string().optional(),
+  /**
+   * ICP record verification link.
+   * Example: "https://beian.miit.gov.cn/"
+   */
+  NEXT_PUBLIC_ICP_LINK: z.string().optional(),
   NEXT_PUBLIC_IS_MARKETPLACE: coercedBoolean.default(false),
   /**
    * Maximum loop count in the workflow
@@ -220,6 +230,8 @@ export const env = createEnv({
     NEXT_PUBLIC_ENABLE_WEBSITE_JINAREADER: isServer ? process.env.NEXT_PUBLIC_ENABLE_WEBSITE_JINAREADER : getRuntimeEnvFromBody('enableWebsiteJinareader'),
     NEXT_PUBLIC_ENABLE_WEBSITE_WATERCRAWL: isServer ? process.env.NEXT_PUBLIC_ENABLE_WEBSITE_WATERCRAWL : getRuntimeEnvFromBody('enableWebsiteWatercrawl'),
     NEXT_PUBLIC_INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: isServer ? process.env.NEXT_PUBLIC_INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH : getRuntimeEnvFromBody('indexingMaxSegmentationTokensLength'),
+    NEXT_PUBLIC_ICP_LINK: isServer ? process.env.NEXT_PUBLIC_ICP_LINK : getRuntimeEnvFromBody('icpLink'),
+    NEXT_PUBLIC_ICP_NUMBER: isServer ? process.env.NEXT_PUBLIC_ICP_NUMBER : getRuntimeEnvFromBody('icpNumber'),
     NEXT_PUBLIC_IS_MARKETPLACE: isServer ? process.env.NEXT_PUBLIC_IS_MARKETPLACE : getRuntimeEnvFromBody('isMarketplace'),
     NEXT_PUBLIC_LOOP_NODE_MAX_COUNT: isServer ? process.env.NEXT_PUBLIC_LOOP_NODE_MAX_COUNT : getRuntimeEnvFromBody('loopNodeMaxCount'),
     NEXT_PUBLIC_MAINTENANCE_NOTICE: isServer ? process.env.NEXT_PUBLIC_MAINTENANCE_NOTICE : getRuntimeEnvFromBody('maintenanceNotice'),

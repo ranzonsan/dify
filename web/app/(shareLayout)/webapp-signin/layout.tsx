@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react'
 import { cn } from '@langgenius/dify-ui/cn'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
+import { ICP_LINK, ICP_NUMBER } from '@/config'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import useDocumentTitle from '@/hooks/use-document-title'
 
@@ -30,16 +31,18 @@ export default function SignInLayout({ children }: PropsWithChildren) {
                 {' '}
                 LangGenius, Inc. All rights reserved.
               </div>
-              <div className="px-8 py-6 system-xs-regular text-text-tertiary">
-                <a
-                  href="https://beian.miit.gov.cn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  陕ICP备2026012460号-1
-                </a>
-              </div>
+              {ICP_NUMBER && (
+                <div className="px-8 py-6 system-xs-regular text-text-tertiary">
+                  <a
+                    href={ICP_LINK || 'https://beian.miit.gov.cn/'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {ICP_NUMBER}
+                  </a>
+                </div>
+              )}
             </>
           )}
         </div>

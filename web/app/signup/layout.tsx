@@ -2,6 +2,7 @@
 import { cn } from '@langgenius/dify-ui/cn'
 
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { ICP_LINK, ICP_NUMBER } from '@/config'
 import Header from '@/app/signin/_header'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import useDocumentTitle from '@/hooks/use-document-title'
@@ -21,11 +22,25 @@ export default function RegisterLayout({ children }: any) {
           </div>
           {systemFeatures.branding.enabled === false && (
             <div className="px-8 py-6 system-xs-regular text-text-tertiary">
-              ©
-              {' '}
-              {new Date().getFullYear()}
-              {' '}
-              LangGenius, Inc. All rights reserved.
+              <div>
+                ©
+                {' '}
+                {new Date().getFullYear()}
+                {' '}
+                LangGenius, Inc. All rights reserved.
+              </div>
+              {ICP_NUMBER && (
+                <div className="mt-1">
+                  <a
+                    href={ICP_LINK || 'https://beian.miit.gov.cn/'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {ICP_NUMBER}
+                  </a>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -3,6 +3,7 @@ import { cn } from '@langgenius/dify-ui/cn'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import * as React from 'react'
 import ChangePasswordForm from '@/app/forgot-password/ChangePasswordForm'
+import { ICP_LINK, ICP_NUMBER } from '@/config'
 import { systemFeaturesQueryOptions } from '@/features/system-features/client'
 import useDocumentTitle from '@/hooks/use-document-title'
 import { useSearchParams } from '@/next/navigation'
@@ -22,11 +23,25 @@ const ForgotPassword = () => {
         {token ? <ChangePasswordForm /> : <ForgotPasswordForm />}
         {!systemFeatures.branding.enabled && (
           <div className="px-8 py-6 text-sm font-normal text-text-tertiary">
-            ©
-            {' '}
-            {new Date().getFullYear()}
-            {' '}
-            LangGenius, Inc. All rights reserved.
+            <div>
+              ©
+              {' '}
+              {new Date().getFullYear()}
+              {' '}
+              LangGenius, Inc. All rights reserved.
+            </div>
+            {ICP_NUMBER && (
+              <div className="mt-1">
+                <a
+                  href={ICP_LINK || 'https://beian.miit.gov.cn/'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  {ICP_NUMBER}
+                </a>
+              </div>
+            )}
           </div>
         )}
       </div>

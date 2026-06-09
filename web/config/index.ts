@@ -34,6 +34,15 @@ export const MARKETPLACE_URL_PREFIX = getStringConfig(
 
 const EDITION = env.NEXT_PUBLIC_EDITION
 
+export const ICP_NUMBER = getStringConfig(
+  env.NEXT_PUBLIC_ICP_NUMBER,
+  '',
+)
+export const ICP_LINK = getStringConfig(
+  env.NEXT_PUBLIC_ICP_LINK,
+  '',
+)
+
 export const IS_CE_EDITION = EDITION === 'SELF_HOSTED'
 export const IS_CLOUD_EDITION = EDITION === 'CLOUD'
 
